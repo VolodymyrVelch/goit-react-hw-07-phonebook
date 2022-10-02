@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types';
+import {InputField, Lable} from './Filter.styled'
 
-export const Filter = ({ onChange}) => {
-    return ( <label>
+export const Filter = ({ onChange }) => {
+  // виводимо в поле input введені дані  на основі яких буде фільтруватись та рендеритись тел книга
+    return ( <Lable>
           Find contacts by name
-          <input
+          <InputField
             type="text"  onChange={onChange}
           />
-        </label>);
+        </Lable>);
 }
 
 Filter.propTypes = {

@@ -1,14 +1,15 @@
 import PropTypes from 'prop-types';
-import { Contact } from './ContactList.styled'
-// import { nanoid } from "nanoid";
+import { ContactField, Contact, Button,Number } from './ContactList.styled'
+
 
 export const ContactList = ({ contactList, deleteContact }) => {
-    
+    // рендер інфо в розмітку за допомогою map (в contactList приходать дані згідно стейт або згадно відфільтрованих згідно методу filter)
+    // видадення потрібного елементу  на основі id (в button)
     return (contactList.map(contact =>
-        <Contact key={contact.id}>
-            <p>{contact.name} : {contact.number}</p>
-            <button type='button' onClick={()=>deleteContact(contact.id) }>delete</button>
-        </Contact>
+        <ContactField key={contact.id}>
+            <Contact>{contact.name} : <Number>{contact.number}</Number> </Contact>
+            <Button type='button' onClick={()=>deleteContact(contact.id) }>delete</Button>
+        </ContactField>
     )
     );
 }

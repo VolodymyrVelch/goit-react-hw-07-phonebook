@@ -2,11 +2,12 @@ import React , {Component} from "react";
 import { ContactForm } from "./contactForm/ContactForm";
 import { Filter } from "./filter/Filter";
 import { ContactList } from "./contactList/ContactList";
-import { Main } from "./App.styled";
+import { Main, Contact } from "./App.styled";
 import { nanoid } from "nanoid";
 import Notiflix from 'notiflix';
 
 
+// створюємо класс 
 export class App extends Component {
   state = {
   contacts: [
@@ -18,24 +19,29 @@ export class App extends Component {
   filter: '',
   }
   
+  // при сабміті  форми отримуємо введені дані (з ContactForm)
   formSubmitData = (value) => {
+    // деструктуризуємо отримані дані (а також gthvfytynys вкладені в state для  тестування)
     const { name, number } = value
     const {contacts} = this.state
-    
+    // по умаові перевіряємо чи немає такого котакту в списку , якщо є виводимо повідомлення (Notiflix) 
     if (contacts.some(contact=> contact.name===name)) {
      Notiflix.Notify.failure('Contact is already in contact list');
     } else
+    // якщо немає , додаємо в список (id генеруємо nanoid). створюємо новий обєк в який розпиляємо попередній + нові дані
         this.setState(({ contacts }) => ({
       contacts: [...contacts, {id:nanoid(), name: name, number: number }],
     }));
   }
 
+  // видаляємо контакт з тел книги порівнюючи id вибраного з іншими контактами якщо не дорінює залишаєм
   deleteContact = (contactId) => {
-    // const { contacts } = this.state;
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(contact => contact.id !== contactId),
     }));
   }
+
+  // фільтруємо книгу згідно веедених даних в поле фільтрації (приводимо символи toLowerCase для порівняння)
   filterContscts = (e) => {
     this.setState({filter: e.currentTarget.value.toLowerCase()});
   }
@@ -49,11 +55,13 @@ export class App extends Component {
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.formSubmitData}/>
         <h2>Contacts</h2>
+        <Contact>
         <Filter
           onChange={this.filterContscts} />
         <ContactList
           contactList={filtredContact}
           deleteContact={this.deleteContact} />
+        </Contact>
       </Main>
     );
 }
