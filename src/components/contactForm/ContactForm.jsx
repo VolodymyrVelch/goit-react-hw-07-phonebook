@@ -1,6 +1,5 @@
-// import React , {Component} from "react";
- import React from 'react';
- import { Formik, Form, Field , ErrorMessage} from 'formik';
+import React from 'react';
+import { Formik, Form, Field , ErrorMessage} from 'formik';
 import PropTypes from 'prop-types';
 import * as yup from 'yup';
 
@@ -21,7 +20,7 @@ const initialValues = { name: '', number: '' }
 export const ContactForm = ({onSubmit}) => {
     const handleSubmit = (values, {resetForm}) => {
          onSubmit(values)
-        resetForm()
+         resetForm()
     }
     return (
         <Formik initialValues={initialValues}
@@ -50,52 +49,3 @@ ContactForm.propTypes = {
     onSubmit: PropTypes.func.isRequired
 }
 
-// ================================================
-
-// export class ContactForm extends Component {
-//     state = {
-//     name: '',
-//     number: ''
-//     }
-
-//     handleChange = e => { 
-//     const {name,value} = e.currentTarget 
-//     this.setState(
-//       { [name]: value, })
-//   };
-
-//   handleSubmit = e => {
-//     e.preventDefault();
-//       this.props.onSubmit(this.state);
-//       this.reset();
-//     }
-
-//     reset = () => {
-//         this.setState ({name: '', number: ''})
-//     }
-//     render() {
-//         return (
-//         <form  onSubmit={this.handleSubmit}>
-//         <label>
-//         Name
-//         <input
-//             type="text"
-//             name="name"
-//             value={this.state.name}
-//             onChange={this.handleChange}
-//         />
-//         </label>
-//         <label>
-//         Number
-//         <input
-//             type="tel"
-//             name="number"
-//             value={this.state.number}
-//             onChange={this.handleChange}
-//         />
-//         </label>
-//     <button type="submit">Add contact</button>
-//     </form>
-//     );
-//     }
-// }
