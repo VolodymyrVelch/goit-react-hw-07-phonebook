@@ -7,7 +7,6 @@ export const Main = styled.div`
   padding: 40px;
   justify-content: center;
   align-items: center;
-  font-size: 40;
   color: #010101;
 `;
 

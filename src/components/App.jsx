@@ -30,7 +30,7 @@ export class App extends Component {
     } else
     // якщо немає , додаємо в список (id генеруємо nanoid). створюємо новий обєк в який розпиляємо попередній + нові дані
         this.setState(({ contacts }) => ({
-      contacts: [...contacts, {id:nanoid(), name: name, number: number }],
+      contacts: [...contacts, {id:nanoid(), name, number }],
     }));
   }
 
