@@ -67,7 +67,7 @@ export class App extends Component {
 
     return (
       <Main>
-        <div>
+        
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.formSubmitData}/>
         <h2>Contacts</h2>
@@ -78,7 +78,6 @@ export class App extends Component {
           contactList={filtredContact}
           deleteContact={this.deleteContact} />
         </Contact>
-        </div>
       </Main>
     );
 }
