@@ -7,7 +7,8 @@ export const ContactList = ({ contactList, deleteContact }) => {
     // видадення потрібного елементу  на основі id (в button)
     return (contactList.map(contact =>
         <ContactField key={contact.id}>
-            <Contact>{contact.name} : <Number>{contact.number}</Number> </Contact>
+            <Contact>{contact.name} : </Contact>
+            <Number>{contact.number}</Number>
             <Button type='button' onClick={()=>deleteContact(contact.id) }>delete</Button>
         </ContactField>
     )

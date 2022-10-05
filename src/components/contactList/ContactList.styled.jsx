@@ -22,13 +22,12 @@ export const Contact = styled.p`
 `;
 
 export const Number = styled.p`
+    display: block;
     font-weight: 700;
     font-size: medium;
-    margin:0;
-    margin-left: 20px;
+    margin: 0;
     color: #1651B8 ;
 `;
-
 
 export const Button = styled.button`
     padding: 5px;

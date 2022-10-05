@@ -45,6 +45,21 @@ export class App extends Component {
   filterContscts = (e) => {
     this.setState({filter: e.currentTarget.value.toLowerCase()});
   }
+
+  // перевіряємо чи є дані влокал сторедж , якщо так  парсим дані з сторедж, в іншому випадку значення буде null 
+  componentDidMount() {
+    const contacts = localStorage.getItem('contacts')
+    const parseContacts = JSON.parse(contacts)
+    if (parseContacts) {
+      this.setState ({contacts: parseContacts})
+      }
+  }
+
+  componentDidUpdate( prevState) {
+    if (this.state.contacts !== prevState.contacts) {
+      localStorage.setItem("contacts", JSON.stringify(this.state.contacts))
+    }
+  }
   
   render() {
     const {contacts}=this.state
@@ -52,6 +67,7 @@ export class App extends Component {
 
     return (
       <Main>
+        <div>
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.formSubmitData}/>
         <h2>Contacts</h2>
@@ -62,6 +78,7 @@ export class App extends Component {
           contactList={filtredContact}
           deleteContact={this.deleteContact} />
         </Contact>
+        </div>
       </Main>
     );
 }

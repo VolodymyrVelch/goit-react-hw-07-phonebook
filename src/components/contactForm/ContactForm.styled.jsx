@@ -6,6 +6,8 @@ export const MainForm = styled(Form)`
     flex-direction: column;
     padding:20px;
     width: 500px;
+    margin-left:auto;
+    margin-right: auto;
     border-radius: 4px;
     box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
 `
@@ -29,7 +31,7 @@ export const InputField = styled(Field)`
     border-radius: 10px;
     border: 1px solid black;
     outline: none;
-    width: 280px;
+    width: 340px;
      background-color: #F6F4F2;
     box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -49,6 +51,7 @@ export const ErrorMess = styled(ErrorMessage)`
     color: #F45707;
     font-style: italic;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: left;
 `
 export const Button = styled.button`
     padding: 10px;
