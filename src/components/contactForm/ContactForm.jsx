@@ -8,7 +8,7 @@ import { MainForm , Lable, InputField,ErrorMess,Button} from './ContactForm.styl
 // присвоюємо в константи умови для алідації
 const patternName = /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
 const massageName = "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan";
-const patternPhone = /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/
+const patternPhone = /^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s./0-9]*$/g;
 const massagePhone = "Phone number must be digits and can contain spaces, dashes, parentheses and can start with +";
 
 // створюємо схему валідації для бібліотеки yap 
