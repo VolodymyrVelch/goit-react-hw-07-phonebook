@@ -8,8 +8,8 @@ import Notiflix from 'notiflix';
 
 
 export function App () {
-  const [filter, setfilter] = useState('');
-  const [contacts, setcontacts] = useState(
+  const [filter, setFilter] = useState('');
+  const [contacts, setContacts] = useState(
     (JSON.parse(window.localStorage.getItem("contacts"))??
     ([
       {id: nanoid(), name: 'Rosie Simpson', number: '459-12-56'},
@@ -35,16 +35,16 @@ export function App () {
      Notiflix.Notify.failure('Contact is already in contact list');
     } else
     // якщо немає , додаємо в список (id генеруємо nanoid). створюємо новий обєк в який розпиляємо попередній + нові дані
-        setcontacts(( contacts ) => ( [...contacts, { id: nanoid(), name, number }]));
+        setContacts(( contacts ) => ( [...contacts, { id: nanoid(), name, number }]));
   }
 
   // // видаляємо контакт з тел книги порівнюючи id вибраного з іншими контактами якщо не дорінює залишаєм
   const deleteContact = (contactId) => {
-    setcontacts(prevState=>prevState.filter(contact => contact.id !== contactId))
+    setContacts(prevState=>prevState.filter(contact => contact.id !== contactId))
   }
 
   // // фільтруємо книгу згідно веедених даних в поле фільтрації (приводимо символи toLowerCase для порівняння)
-  const filterContscts = (e) => setfilter(e.currentTarget.value.toLowerCase());
+  const filterContscts = (e) => setFilter(e.currentTarget.value.toLowerCase());
   
   const filtredContact = contacts.filter(contact => contact.name.toLowerCase().includes(filter),);
 
