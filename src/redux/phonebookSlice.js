@@ -1,4 +1,7 @@
 import { createSlice, nanoid } from '@reduxjs/toolkit';
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+// import { phonebookReducer } from './phonebookSlice';
 
 const phoneBookInitialState = {
   contacts: [
@@ -30,7 +33,16 @@ const phoneBookSlice = createSlice({
   },
 });
 
+// Зберігаємо дані в LocalStorage за допомогою бібліотеки persist-redux
+const persistConfig = {
+  key: 'root',
+  storage,
+};
+
+export const persistedPhonebookReducer = persistReducer(
+  persistConfig,
+  phoneBookSlice.reducer
+);
+
 export const { formSubmitData, deleteContact, filterContscts } =
   phoneBookSlice.actions;
-
-export const phonebookReducer = phoneBookSlice.reducer;

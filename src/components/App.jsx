@@ -3,10 +3,7 @@ import { Filter } from "./filter/Filter";
 import { ContactList } from "./contactList/ContactList";
 import { Main, Contact } from "./App.styled";
 
-
-
 export function App () {
-
     return (
       <Main>
         <h1>Phonebook</h1>
