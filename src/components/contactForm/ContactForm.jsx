@@ -1,8 +1,11 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { formSubmitData } from 'redux/phonebookSlice';
+import { getContacts } from 'redux/selectors';
 import { Formik} from 'formik';
-import PropTypes from 'prop-types';
 import * as yup from 'yup';
 import { MainForm , Lable, InputField,ErrorMess,Button} from './ContactForm.styled';
+import Notiflix from 'notiflix';
 
 
 // присвоюємо в константи умови для алідації
@@ -19,12 +22,17 @@ let schema = yup.object().shape({
 
 //  початкові дані  стейту  для  скидання форми (не враховуємо перманентні дані які введені для тестування)
 const initialValues = { name: '', number: '' }
- 
-export const ContactForm = ({onSubmit}) => {
+
+export const ContactForm = () => {
+    const dipatch = useDispatch();
+    const stateContacts = useSelector(getContacts)
+
     const handleSubmit = (values, { resetForm }) => {
-        // дані  передаються да допомогую бібліотеки Formik 
-         onSubmit(values)
-         resetForm()
+        resetForm()
+        if (stateContacts.some(contact => contact.name === values.name)) {
+        Notiflix.Notify.failure('Contact is already in contact list');
+        } else
+        dipatch(formSubmitData(values));
     }
     return (
         <Formik initialValues={initialValues}
@@ -47,9 +55,5 @@ export const ContactForm = ({onSubmit}) => {
         </Formik>
     );
     
-}
-
-ContactForm.propTypes = {
-    onSubmit: PropTypes.func.isRequired
 }
 
