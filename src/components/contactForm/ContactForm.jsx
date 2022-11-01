@@ -24,15 +24,15 @@ let schema = yup.object().shape({
 const initialValues = { name: '', number: '' }
 
 export const ContactForm = () => {
-    const dipatch = useDispatch();
-    const stateContacts = useSelector(getContacts)
+    const dispatch = useDispatch();
+    const contacts = useSelector(getContacts)
 
     const handleSubmit = (values, { resetForm }) => {
         resetForm()
-        if (stateContacts.some(contact => contact.name === values.name)) {
+        if (contacts.some(contact => contact.name === values.name)) {
         Notiflix.Notify.failure('Contact is already in contact list');
         } else
-        dipatch(formSubmitData(values));
+        dispatch(formSubmitData(values));
     }
     return (
         <Formik initialValues={initialValues}
