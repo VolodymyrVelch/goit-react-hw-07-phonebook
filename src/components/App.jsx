@@ -4,7 +4,7 @@ import { ContactList } from "./contactList/ContactList";
 import { Main, Contact } from "./App.styled";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAll } from "redux/operation";
+import { fetchContacts } from "redux/operation";
 import { selectError, selectIsLoading } from "redux/selectors";
 
 export function App() {
@@ -12,7 +12,7 @@ export function App() {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError)
   useEffect(() => {
-  dispatch(fetchAll())
+  dispatch(fetchContacts())
   }, [dispatch]);
 
     return (
