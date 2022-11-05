@@ -1,15 +1,22 @@
 import { createSlice, nanoid } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-// import { phonebookReducer } from './phonebookSlice';
+import { fetchAll, addContact, deleteContacts } from './operation';
+
+const handlePending = state => {
+  state.isLoading = true;
+};
+
+const handleRejected = (state, action) => {
+  state.isLoading = false;
+  state.error = action.payload;
+};
 
 const phoneBookInitialState = {
-  contacts: [
-    { id: nanoid(), name: 'Rosie Simpson', number: '459-12-56' },
-    { id: nanoid(), name: 'Hermione Kline', number: '443-89-12' },
-    { id: nanoid(), name: 'Eden Clements', number: '645-17-79' },
-    { id: nanoid(), name: 'Annie Copeland', number: '227-91-26' },
-  ],
+  contacts: [],
+  items: [],
+  isLoading: false,
+  error: null,
   filter: '',
 };
 
@@ -31,6 +38,9 @@ const phoneBookSlice = createSlice({
       state.filter = action.payload;
     },
   },
+  // extraReducers: {
+  //   []
+  // },
 });
 
 // Зберігаємо дані в LocalStorage за допомогою бібліотеки persist-redux
