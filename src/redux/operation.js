@@ -20,13 +20,12 @@ export const fetchContacts = createAsyncThunk(
 );
 export const addContact = createAsyncThunk(
   'contacts/addContact',
-  async function (name, number, thunkAPI) {
+  async function ({ name, number }, thunkAPI) {
     try {
       const response = await axios.post('/contacts', { name, number });
       if (!response) {
         throw new Error('Server Error!');
       }
-      console.log(response.data);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -36,13 +35,11 @@ export const addContact = createAsyncThunk(
 export const deleteContacts = createAsyncThunk(
   'contacts/addContacts',
   async function (contactId, thunkAPI) {
-    console.log(contactId);
     try {
       const response = await axios.delete(`/contacts/${contactId}`);
       if (!response) {
         throw new Error('Server Error!');
       }
-      console.log(response.data);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

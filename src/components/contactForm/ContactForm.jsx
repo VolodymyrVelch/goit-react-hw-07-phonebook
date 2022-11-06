@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { formSubmitData } from 'redux/phonebookSlice';
-import { getContacts } from 'redux/selectors';
+import { addContact } from 'redux/operation';
+import { selectContacts } from 'redux/selectors';
 import { Formik} from 'formik';
 import * as yup from 'yup';
 import { MainForm , Lable, InputField,ErrorMess,Button} from './ContactForm.styled';
@@ -25,14 +25,14 @@ const initialValues = { name: '', number: '' }
 
 export const ContactForm = () => {
     const dispatch = useDispatch();
-    const contacts = useSelector(getContacts)
+    const contacts = useSelector(selectContacts)
 
     const handleSubmit = (values, { resetForm }) => {
         resetForm()
         if (contacts.some(contact => contact.name === values.name)) {
         Notiflix.Notify.failure('Contact is already in contact list');
         } else
-        dispatch(formSubmitData(values));
+        dispatch(addContact(values));
     }
     return (
         <Formik initialValues={initialValues}

@@ -21,11 +21,17 @@ export const Contact = styled.p`
     font-size: large;
 `;
 
+export const NumberWrap = styled.div`
+    display: flex;
+    align-items: center;
+`
+
 export const Number = styled.p`
     display: block;
     font-weight: 700;
     font-size: medium;
     margin: 0;
+    margin-right: 50px;
     color: #1651B8 ;
 `;
 
