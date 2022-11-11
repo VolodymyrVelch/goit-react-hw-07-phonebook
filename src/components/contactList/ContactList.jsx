@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteContacts } from 'redux/operation';
+import { deleteContact } from 'redux/operation';
 import { selectContacts, selectFilter } from 'redux/selectors';
 import { ContactField, Contact, Button, Number, NumberWrap } from './ContactList.styled'
 
@@ -15,7 +15,7 @@ export const ContactList = () => {
             <Contact>{contact.name} : </Contact>
             <NumberWrap>
             <Number>{contact.number}</Number>
-            <Button type='button' onClick={() => dispatch(deleteContacts(contact.id)) }>delete</Button>
+            <Button type='button' onClick={() => dispatch(deleteContact(contact.id)) }>delete</Button>
             </NumberWrap>
         </ContactField>
     )
