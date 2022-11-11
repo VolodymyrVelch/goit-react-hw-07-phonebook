@@ -16,13 +16,13 @@ const phoneBookSlice = createSlice({
     contacts: [],
     isLoading: false,
     error: null,
-    filter: '',
+    // filter: '',
   },
-  reducers: {
-    filterContscts(state, action) {
-      state.filter = action.payload;
-    },
-  },
+  // reducers: {
+  //   filterContscts(state, action) {
+  //     state.filter = action.payload;
+  //   },
+  // },
   extraReducers: {
     [fetchContacts.pending]: handlePending,
     [fetchContacts.fulfilled](state, action) {
@@ -50,6 +50,6 @@ const phoneBookSlice = createSlice({
   },
 });
 
-export const { filterContscts } = phoneBookSlice.actions;
+// export const { filterContscts } = phoneBookSlice.actions;
 
 export const contactReducer = phoneBookSlice.reducer;
